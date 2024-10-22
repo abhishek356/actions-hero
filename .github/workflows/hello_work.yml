@@ -32,8 +32,13 @@ jobs:
     comment-with-action :
         runs-on : ubuntu-latest
         steps:
+
+         - name : "Dump github  context"
+           run : echo "${{toJson(github.event)}}" | jq
+           shell : bash
+           
          - name : Create Comment
-           uses : peter-evans/Create-or-update-comment@v1
+           uses : peter-evans/create-or-update-comment@v4
            with :
             issue-number : ${{github.event.issue.number}}
             body : |
