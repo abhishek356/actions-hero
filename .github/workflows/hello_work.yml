@@ -1,13 +1,13 @@
 name : Hello world workflow
 
-on : 
+on: 
     push:
         branches:
-            -main
+            - main
     pull_request:
         branches:
-            -main
-    issues : 
+            - main
+    issues: 
         types: [opened]
 
     workflow_dispatch:
@@ -18,30 +18,30 @@ jobs:
         steps:
           - uses: actions/checkout@v2
           - name: hello world
-            run : echo "Hello world"
+            run: echo "Hello world"
             shell: bash
 
     goodbye:
-        runs-on : ubuntu-latest
+        runs-on: ubuntu-latest
         steps:
-            - name : goodbye world
-              run : echo "good bye world"
+            - name: goodbye world
+              run: echo "good bye world"
               shell: bash
 
     
-    comment-with-action :
-        runs-on : ubuntu-latest
+    comment-with-action:
+        runs-on: ubuntu-latest
         steps:
 
-         - name : "Dump github  context"
-           run : echo "${{toJson(github.event)}}" | jq
-           shell : bash
-           
-         - name : Create Comment
-           uses : peter-evans/create-or-update-comment@v4
-           with :
-            issue-number : ${{github.event.issue.number}}
-            body : |
+         - name: "Dump github  context"
+           run: echo "${{toJson(github.event)}}" | jq
+           shell: bash
+
+         - name: Create Comment
+           uses: peter-evans/create-or-update-comment@v4
+           with:
+            issue-number: ${{github.event.issue.number}}
+            body: |
              This is a multiline comment
              -with Github **Abhishek Srivastava**:sparkles:
              -created by [Create-or-update-comment][1]
