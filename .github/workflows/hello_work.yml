@@ -41,6 +41,7 @@ jobs:
            uses: peter-evans/create-or-update-comment@v4
            with:
             issue-number: ${{github.event.issue.number}}
+            token: ${{secrets.GITHUB_TOKEN}}
             body: |
              This is a multiline comment
              -with Github **Abhishek Srivastava**:sparkles:
@@ -48,7 +49,4 @@ jobs:
 
              [1]:https://github.com/peter-evans/create-or-update-comment
              reactions: "+1"
-
-        env: 
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}   
 
