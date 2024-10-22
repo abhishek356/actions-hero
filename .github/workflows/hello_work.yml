@@ -7,6 +7,8 @@ on :
     pull_request:
         branches:
             -main
+    issues : 
+        types: [opened]
 
     workflow_dispatch:
 
@@ -25,4 +27,20 @@ jobs:
             - name : goodbye world
               run : echo "good bye world"
               shell: bash
+
+    
+    comment-with-action :
+        runs-on : ubuntu-latest
+        steps:
+         - name : Create Comment
+           uses : peter-evans/Create-or-update-comment@v1
+           with :
+            issue-number : ${{github.event.issue.number}}
+            body : |
+             This is a multiline comment
+             -with Github **Abhishek Srivastava**:sparkles:
+             -created by [Create-or-update-comment][1]
+
+             [1]:https://github.com/peter-evans/create-or-update-comment
+             reactions: "+1"
 
